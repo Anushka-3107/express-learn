@@ -13,9 +13,14 @@ app.get('/',(req,res)=>{
 app.get('/api/phone/:phoneID', (req,res) => {
     // params
     console.log(req.params)
+    const {phoneID} = req.params;
     const singleProduct = phone.find((product) =>
-        product.id === 1
+        product.id === Number(phoneID)
     )
+
+    if(!singleProduct){
+        res.status(404).send('product not found')
+    }
     res.json(singleProduct);
 })
 
