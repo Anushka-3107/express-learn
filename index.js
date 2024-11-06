@@ -10,14 +10,13 @@ app.get('/',(req,res)=>{
     )
 })
 
-app.get('/api/phone', (req,res) => {
-    // passing only few items in phone data
-    const newData = phone.map((data)=>{
-        const {id,name} = data;
-        return {id,name};
-    })
-
-    res.json(newData);
+app.get('/api/phone/:phoneID', (req,res) => {
+    // params
+    console.log(req.params)
+    const singleProduct = phone.find((product) =>
+        product.id === 1
+    )
+    res.json(singleProduct);
 })
 
 
