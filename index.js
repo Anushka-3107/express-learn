@@ -11,8 +11,16 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/api/phone', (req,res) => {
-    res.json(phone);
+    // passing only few items in phone data
+    const newData = phone.map((data)=>{
+        const {id,name} = data;
+        return {id,name};
+    })
+
+    res.json(newData);
 })
+
+
 
 app.listen(3000,()=>{
     console.log('hello server is created ....');
