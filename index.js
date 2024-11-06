@@ -1,19 +1,19 @@
-const express = require('express')
-// console.log(express)
 
-const app = express(); //initialzition of express
+const express = require('express');
+const app = express();
+const phone = require('./data.js')
+
 
 app.get('/',(req,res)=>{
-    res.send('hello world')
+    res.send(
+        '<h1>Home Page</h1><a href="/api/phone">Phone</a>'
+    )
 })
 
-// another method
-app.get('/about',(req,res)=>{
-    res.send('hello anushka')
+app.get('/api/phone', (req,res) => {
+    res.json(phone);
 })
 
-app.listen(8000,(req,res)=>{
-    console.log('running ...');
-})
-
-// express.get
+app.listen(3000,()=>{
+    console.log('hello server is created ....');
+});
